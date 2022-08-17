@@ -41,15 +41,39 @@ For this challenge assignment, we had to add to the code that we developed throu
 ### Election-Audit Results
 
 - Total votes cast: 369,711
-    - Code used:
+    - Relevant code used:
 ```
 total_votes = 0
-for row in file_reader:
-    total_votes += 1
+with open(file_to_load) as election_data:
+    file_reader = csv.reader(election_data)
+    for row in file_reader:
+        total_votes += 1
 ```
         
-- Votes by county
-- County with most votes
+- Votes by county: Jefferson: 10.5% (38,385), Denver: 82.8% (306,055), Arapahoe: 6.7% (24,801)
+    -Relevant code used:
+    ```
+    county_options = []
+    county_votes = {}
+    with open(file_to_load) as election_data:
+        file_reader = csv.reader(election_data)
+        for row in file_reader:
+            total_votes = total_votes + 1
+            county_name = row[1]
+            if county_name not in county_options:
+                county_options.append(county_name)
+                county_votes[county_name] = 0
+            county_votes[county_name] += 1
+        for county_name in county_votes:
+            county_votecount = county_votes.get(county_name)
+            votecount_percentage = float(county_votecount) / float(total_votes) * 100
+            county_results = (
+                f"{county_name}: {votecount_percentage:.1f}% ({county_votecount:,})\n")
+    ```
+
+- County with most votes: Denver
+    - Relevant code used:
+```
 - Votes by candidate
 - Election winner
 
