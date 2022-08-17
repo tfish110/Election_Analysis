@@ -55,8 +55,7 @@ For this challenge assignment, we had to add to the code that we developed throu
     ```
     county_options = []
     county_votes = {}
-    ```
-    ```
+    
     with open(file_to_load) as election_data:
         file_reader = csv.reader(election_data)
         for row in file_reader:
@@ -66,8 +65,7 @@ For this challenge assignment, we had to add to the code that we developed throu
                 county_options.append(county_name)
                 county_votes[county_name] = 0
             county_votes[county_name] += 1
-     ```
-        ```
+        
         for county_name in county_votes:
             county_votecount = county_votes.get(county_name)
             votecount_percentage = float(county_votecount) / float(total_votes) * 100
@@ -81,8 +79,7 @@ For this challenge assignment, we had to add to the code that we developed throu
     largest_turnout = ""
     turnout_votes = 0
     turnout_percentage = 0
-    ```
-            ```
+            
             if (county_votecount > turnout_votes) and (votecount_percentage > turnout_percentage):
                 turnout_votes = county_votecount
                 largest_turnout = county_name
@@ -92,7 +89,10 @@ For this challenge assignment, we had to add to the code that we developed throu
 - Votes by candidate: Charles Casper Stockham: 23.0% (85,213), Diana DeGette: 73.8% (272,892), Raymon Anthony Doane: 3.1% (11,606)
     - Relevant code used:
     ```
-    
+    candidate_options = []
+    candidate_votes = {}
+    ```
+    ```
 - Election winner
 
 ### Election-Audit Summary
