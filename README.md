@@ -40,10 +40,13 @@ For this challenge assignment, we had to add to the code that we developed throu
 ## Challenge Summary
 ### Election-Audit Results
 
-- Total votes cast: 369, 711
-    - Code used: `total_votes = 0`
-    - `for row in file_reader:`
-    - ` total_votes += 1`
+- Total votes cast: 369,711
+    - Code used:
+```
+total_votes = 0
+for row in file_reader:
+    total_votes += 1
+```
         
 - Votes by county
 - County with most votes
