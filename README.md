@@ -42,19 +42,21 @@ For this challenge assignment, we had to add to the code that we developed throu
 
 - Total votes cast: 369,711
     - Relevant code used:
-```
-total_votes = 0
-with open(file_to_load) as election_data:
-    file_reader = csv.reader(election_data)
-    for row in file_reader:
-        total_votes += 1
-```
+    ```
+    total_votes = 0
+    with open(file_to_load) as election_data:
+        file_reader = csv.reader(election_data)
+        for row in file_reader:
+            total_votes += 1
+    ```
         
 - Votes by county: Jefferson: 10.5% (38,385), Denver: 82.8% (306,055), Arapahoe: 6.7% (24,801)
-    -Relevant code used:
+    - Relevant code used:
     ```
     county_options = []
     county_votes = {}
+    ```
+    ```
     with open(file_to_load) as election_data:
         file_reader = csv.reader(election_data)
         for row in file_reader:
@@ -64,17 +66,33 @@ with open(file_to_load) as election_data:
                 county_options.append(county_name)
                 county_votes[county_name] = 0
             county_votes[county_name] += 1
+     ```
+        ```
         for county_name in county_votes:
             county_votecount = county_votes.get(county_name)
             votecount_percentage = float(county_votecount) / float(total_votes) * 100
             county_results = (
                 f"{county_name}: {votecount_percentage:.1f}% ({county_votecount:,})\n")
-    ```
+        ```
 
 - County with most votes: Denver
     - Relevant code used:
-```
-- Votes by candidate
+    ```
+    largest_turnout = ""
+    turnout_votes = 0
+    turnout_percentage = 0
+    ```
+            ```
+            if (county_votecount > turnout_votes) and (votecount_percentage > turnout_percentage):
+                turnout_votes = county_votecount
+                largest_turnout = county_name
+                turnout_percentage = votecount_percentage
+            ```
+            
+- Votes by candidate: Charles Casper Stockham: 23.0% (85,213), Diana DeGette: 73.8% (272,892), Raymon Anthony Doane: 3.1% (11,606)
+    - Relevant code used:
+    ```
+    
 - Election winner
 
 ### Election-Audit Summary
