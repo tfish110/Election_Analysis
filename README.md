@@ -42,8 +42,10 @@ For this challenge assignment, we had to add to the code that we developed throu
 
 - Total votes cast: 369, 711
     - Code used: `total_votes = 0`
-    - `for row in file_reader:
+    - ```
+    - for row in file_reader:
             total_votes = total_votes + 1`
+    -```
         
 - Votes by county
 - County with most votes
