@@ -58,6 +58,7 @@ For this challenge assignment, we had to add to the code that we developed throu
     
     with open(file_to_load) as election_data:
         file_reader = csv.reader(election_data)
+        headers = next(file_reader)
         for row in file_reader:
             total_votes = total_votes + 1
             county_name = row[1]
@@ -91,8 +92,36 @@ For this challenge assignment, we had to add to the code that we developed throu
     ```
     candidate_options = []
     candidate_votes = {}
+    
+    with open(file_to_load) as election_data:
+        file_reader = csv.reader(election_data)
+        headers = next(file_reader)
+        for row in file_reader:
+            total_votes = total_votes + 1
+            candidate_name = row[2]
+            if candidate_name not in candidate_options:
+                candidate_options.append(candidate_name)
+                candidate_votes[candidate_name] = 0
+            candidate_votes[candidate_name] += 1
+            
+        for candidate_name in candidate_votes:
+            votes = candidate_votes.get(candidate_name)
+            vote_percentage = float(votes) / float(total_votes) * 100
+            candidate_results = (
+                f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")         
     ```
+
+- Election winner: Diana DeGette: 73.8% (272,892)
+    - Relevant code used:
     ```
-- Election winner
+    winning_candidate = ""
+    winning_count = 0
+    winning_percentage = 0
+    
+            if (votes > winning_count) and (vote_percentage > winning_percentage):
+            winning_count = votes
+            winning_candidate = candidate_name
+            winning_percentage = vote_percentage
+     ```
 
 ### Election-Audit Summary
